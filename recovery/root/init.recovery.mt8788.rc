@@ -18,12 +18,12 @@ on property:ro.crypto.state=encrypted
 
 #on property:ro.crypto.state=unencrypted
 #    stop gatekeeper-1-0
-#    stop keymaster-4-0
+#    stop keymaster-4-1
 #    stop servicemanager
 #    stop hwservicemanager
 
 #on property:twrp.decrypt.done=true && property:twrp.all.users.decrypted=true
-#    stop keymaster-4-0
+#    stop keymaster-4-1
 #    stop gatekeeper-1-0
 #    stop servicemanager
 #    stop hwservicemanager
