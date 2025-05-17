@@ -13,7 +13,7 @@ service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
     seclabel u:r:recovery:s0
 
 on property:ro.crypto.state=encrypted
-     start boot-hal-1-2
+     start boot-hal-1-1
      start keymaster-4-1
 
 #on property:ro.crypto.state=unencrypted
