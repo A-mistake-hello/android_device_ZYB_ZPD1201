@@ -115,7 +115,6 @@ TW_INCLUDE_REPACKTOOLS := true
 TW_INCLUDE_CRYPTO_FBE := true
 BOARD_USES_METADATA_PARTITION := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
-TW_CRYPTO_FS_TYPE := "ext4"
 TW_CRYPTO_REAL_BLKDEV := "/dev/block/by-name/userdata"
 TW_CRYPTO_KEY_DIR := "/metadata/vold/metadata_encryption"
 TW_CRYPTO_FBE_VERSION := "2"
