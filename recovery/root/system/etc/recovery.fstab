@@ -16,7 +16,8 @@ auto                      vfat     /devices/platform/usb0/11200000.xhci0*     fl
 /bootloader               emmc     /dev/block/by-name/lk                      flags=display=bootloader
 /bootloader2              emmc     /dev/block/by-name/lk2                     flags=display=bootloader2
 /misc                     emmc     /dev/block/by-name/para                    flags=display=misc
-/boot                     emmc     /dev/block/by-name/boot                    flags=display=boot;slotselect
+/boot_a                     emmc     /dev/block/by-name/boot_a                    flags=display=boot_a;slotselect
+/boot_b                     emmc     /dev/block/by-name/boot_b                    flags=display=boot_b;slotselect
 /vbmeta_vendor            emmc     /dev/block/by-name/vbmeta_vendor           flags=display=vbmeta_vendor;slotselect
 /vbmeta_system            emmc     /dev/block/by-name/vbmeta_system           flags=display=vbmeta_system;slotselect
 /logo                     emmc     /dev/block/by-name/logo                    flags=display=logo
