@@ -1,3 +1,34 @@
+service keymaster-4-1 /vendor/bin/hw/android.hardware.keymaster@4.1-service
+    user root
+    group root drmrpc
+    disabled
+    seclabel u:r:recovery:s0
+    interface android.hardware.keymaster@4.1::IKeymasterDevice default
+
+service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
+    interface android.hardware.gatekeeper@1.0::IGatekeeper default
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+on property:ro.crypto.state=encrypted
+     start boot-hal-1-2
+     start keymaster-4-1
+
+#on property:ro.crypto.state=unencrypted
+#    stop gatekeeper-1-0
+#    stop keymaster-4-1
+#    stop servicemanager
+#    stop hwservicemanager
+
+#on property:twrp.decrypt.done=true && property:twrp.all.users.decrypted=true
+#    stop keymaster-4-1
+#    stop gatekeeper-1-0
+#    stop servicemanager
+#    stop hwservicemanager
+
+
 on init
     setprop sys.usb.configfs 1
     setprop sys.usb.ffs.aio_compat 1
@@ -15,7 +46,6 @@ on post-fs
     symlink /dev/block/sdb /dev/block/mmcblk0boot1
     symlink /dev/block/mmcblk0boot0 /dev/block/by-name/preloader_a
     symlink /dev/block/mmcblk0boot1 /dev/block/by-name/preloader_b
-
 
     # Support A/B feature for combo emmc and ufs OTA update
     symlink /dev/block/by-name/preloader_a /dev/block/by-name/preloader_emmc_a
