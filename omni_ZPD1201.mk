@@ -27,3 +27,21 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="full_ZPD1201-user 12 SP1A.210812.016 703_704_705_710_717_718_719-244 release-keys"
 
 BUILD_FINGERPRINT := ZYB/full_ZPD1201/ZPD1201:12/SP1A.210812.016/703_704_705_710_717_718_719-244:user/release-keys
+
+# Fastbootd
+PRODUCT_PACKAGES += \
+    android.hardware.fastboot@1.0-impl-mock \
+    android.hardware.fastboot@1.0-impl-mock.recovery \
+    fastbootd
+
+# Shipping API level
+PRODUCT_SHIPPING_API_LEVEL := 30
+
+# Keystore
+PRODUCT_PACKAGES += \
+    android.system.keystore2
+
+# Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@4.1
+    

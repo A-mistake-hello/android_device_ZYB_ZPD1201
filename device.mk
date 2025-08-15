@@ -6,18 +6,38 @@
 #
 
 LOCAL_PATH := device/zyb/ZPD1201
+
+# Dynamic Partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+# Virtual A/B
+ENABLE_VIRTUAL_AB := true
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
+
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+    POSTINSTALL_PATH_system=system/bin/mtk_plpath_utils \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
 
+PRODUCT_PACKAGES += \
+    otapreopt_script \
+    cppreopts.sh \
+    update_engine \
+    update_verifier \
+    update_engine_sideload
+
+# MTK PlPath Utils
+PRODUCT_PACKAGES += \
+    mtk_plpath_utils \
+    mtk_plpath_utils.recovery
+    
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-impl \
-    android.hardware.boot@1.0-service \
-    android.hardware.boot@1.0.recovery \
+    android.hardware.boot@1.2-impl \
+    android.hardware.boot@1.2-service \
+    android.hardware.boot@1.2.recovery \
     bootctrl.mt6771 \
     bootctrl.mt6771.recovery 
 
@@ -30,3 +50,4 @@ PRODUCT_PACKAGES += \
     update_engine \
     update_verifier \
     update_engine_sideload
+    
